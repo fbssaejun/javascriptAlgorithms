@@ -24,3 +24,15 @@ const frankenSplice = (arr1, arr2, n) => {
 }
 
 frankenSplice([1, 2, 3], [4, 5, 6], 1); // => [4,1,2,3,5,6]
+
+/* ================================================== SOLUTION 1 ================================================================ */
+
+const frankenSplice = (arr1, arr2, n) => {
+  //Make a local copy since we cannot mutate input array
+  let localArr = [...arr2]
+  //Insert copy of arr1 into local array at the index of n
+  localArr.splice(n, 0, ...arr1);
+  return localArr;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1); // => [4,1,2,3,5,6]
