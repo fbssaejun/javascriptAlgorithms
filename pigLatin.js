@@ -18,9 +18,11 @@ const translatePigLatin = (str) => {
   const firstLetter = str[0]
   const stripped = str.slice(1, str.length)
 
+  //If first letter starts with a vowel, return a string with 'ay' concatenated at the end
   if (vowels.includes(firstLetter)) {
     return `${str}way`
   }
+  //Loop through each letter in str, if it meets a vowel return a string with the previous letters sliced from str, attached to the end and 'ay' concatenated at the end
   for (let i = 0; i < str.length; i++) {
     if(vowels.includes(str[i])) {
       let stripped = str.slice(i, str.length)
@@ -28,6 +30,7 @@ const translatePigLatin = (str) => {
       return `${stripped}${attach}ay`
     }
   }
+  //If no vowels are in a string, return a string with 'ay' concatenated at the end
   return str + 'ay'
 }
 
