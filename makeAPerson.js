@@ -45,4 +45,7 @@ let Person = (firstAndLast) => {
 
 let bob = new Person("Bob Ross");
 
-bob.getFullName();  //  => "Bob  Ross"
+bob.getFullName();  //  => "Bob Ross"
+// Sets first name as the input value
+bob.setFirstName("Anthony")
+bob.getFullName();  // => "Anthony Ross"
