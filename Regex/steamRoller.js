@@ -24,5 +24,21 @@ const steamrollArray = (arr) => {
   return flattenedArray;
 };
 
-// test here
+steamrollArray([1, [2], [3, [[4]]]]); // => [1,2,3,4]
+
+/* ================================================== SOLUTION 2 ================================================================ */
+
+const steamrollArray = (arr) => {
+  const flatStringArray = arr.toString().split(',');
+  return flatStringArray.map(el => {
+    if (el === "[object object]") {
+      return {};
+    } else if (isNaN(el)) {
+      return el;
+    } else {
+      return parseInt(el);
+    }
+  });
+};
+
 steamrollArray([1, [2], [3, [[4]]]]); // => [1,2,3,4]
