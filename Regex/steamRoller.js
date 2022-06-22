@@ -9,7 +9,7 @@ Flatten a nested array. You must account for varying levels of nesting.
 
 /* ================================================== SOLUTION 1 ================================================================ */
 
-const steamrollArray = (arr) => {
+const steamrollArray1 = (arr) => {
   const flattenedArray = [];
   // Loop over array contents
   for (let i = 0; i < arr.length; i++) {
@@ -24,11 +24,11 @@ const steamrollArray = (arr) => {
   return flattenedArray;
 };
 
-steamrollArray([1, [2], [3, [[4]]]]); // => [1,2,3,4]
+steamrollArray1([1, [2], [3, [[4]]]]); // => [1,2,3,4]
 
 /* ================================================== SOLUTION 2 ================================================================ */
 
-const steamrollArray = (arr) => {
+const steamrollArray2 = (arr) => {
   const flatStringArray = arr.toString().split(',');
   return flatStringArray.map(el => {
     if (el === "[object object]") {
@@ -41,4 +41,4 @@ const steamrollArray = (arr) => {
   });
 };
 
-steamrollArray([1, [2], [3, [[4]]]]); // => [1,2,3,4]
+steamrollArray2([1, [2], [3, [[4]]]]); // => [1,2,3,4]
