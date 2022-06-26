@@ -9,8 +9,11 @@ The binary string will be space separated.
 */
 
 const binaryAgent = (str) => {
+  // Split string separated with spaces and sotre it as an array
   const binaryArr = str.split(' ')
+  // Create empty string variable to concatenate converted binary code
   let string = ""
+  // Loop through each binary code and formate into english character, then add it onto "string" variable
   for (let binaryCode of binaryArr) {
     string += String.fromCharCode(parseInt(binaryCode, 2))
   }
