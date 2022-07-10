@@ -1,21 +1,44 @@
 /*
 
-QUESTION) 
+QUESTION)
 
 Flatten a nested array. You must account for varying levels of nesting.
 
+<!> Your solution should not use the Array.prototype.flat() or Array.prototype.flatMap() method <!>
 */
 
-const steamrollArray = (arr) => {
-  // Map through array and if an item is an array, flatten out the array until it is not a nested array
-  return  arr.map(el => {
-    if(Array.isArray(el)) {
-      return el.flat(Infinity)
-    } else {
-    return el
-    }
-    // Flatten out final array
-  }).flat(Infinity)
-}
+/* ================================================== SOLUTION 1 ================================================================ */
 
-steamrollArray([1, [2], [3, [[4]]]]); // => [1, 2, 3, 4]
+const steamrollArray1 = (arr) => {
+  const flattenedArray = [];
+  // Loop over array contents
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      // Recursively flatten entries that are arrays and push into the flattenedArray
+      flattenedArray.push(...steamrollArray(arr[i]));
+    } else {
+      // Copy contents that are not arrays
+      flattenedArray.push(arr[i]);
+    }
+  }
+  return flattenedArray;
+};
+
+steamrollArray1([1, [2], [3, [[4]]]]); // => [1,2,3,4]
+
+/* ================================================== SOLUTION 2 ================================================================ */
+
+const steamrollArray2 = (arr) => {
+  const flatStringArray = arr.toString().split(',');
+  return flatStringArray.map(el => {
+    if (el === "[object object]") {
+      return {};
+    } else if (isNaN(el)) {
+      return el;
+    } else {
+      return parseInt(el);
+    }
+  });
+};
+
+steamrollArray2([1, [2], [3, [[4]]]]); // => [1,2,3,4]
