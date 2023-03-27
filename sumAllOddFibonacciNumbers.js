@@ -26,5 +26,25 @@ function sumFibs(num) {
   return fibs.filter(fibNums => fibNums % 2 !== 0).reduce((a,b) => a + b);
 }
 
+// Solution 2
+
+function sumFibs(num) {
+  // initialize first two fibonacci numbers
+  let [a, b] = [1, 1];
+  // set a variable to sum up all the odd fibonacci numbers
+  let sum = a;
+
+  for (let i = 1; b <= num; i++) {
+    // if number is odd, add it to sum variable
+    if (b % 2 === 1) {
+      sum += b;
+    }
+    // update [a,b] variable with the last two fibonacci numbers
+    [a, b] = [b, a + b];
+  }
+
+  return sum;
+}
+
 sumFibs(4); // => 5
 sumFibs(10) // => 10
