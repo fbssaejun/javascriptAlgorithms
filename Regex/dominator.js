@@ -14,6 +14,7 @@ Write a function dominator(arr) that, given a zero-indexed array arr consisting 
 const dominator = (arr) => {
   let hashMap = {};
 
+  // Create a hashmap with each distinct number being the key and the repeated counts being the value
   for (let num of arr) {
     hashMap[num] = (hashMap[num] || 0) + 1;
   }
@@ -22,6 +23,9 @@ const dominator = (arr) => {
   const max = Math.max(...values);
   let keys = Object.keys(hashMap);
 
+  // If the maximum count is less than or equal to half the array's lenght
+  // it means there are no dominant number in the array so return -1.
+  // Else, find the key in the hashMap with the highest count.
   if (max <= arr.length / 2) {
     return -1;
   } else {
